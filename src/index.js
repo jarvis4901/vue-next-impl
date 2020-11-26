@@ -1,5 +1,4 @@
-import { reactivity } from "../lib/reactivity";
-
+import { reactivity, effect } from "../lib/reactivity";
 let person = reactivity({
   name: "郭家辉",
   age: 26,
@@ -24,7 +23,10 @@ let person = reactivity({
   ],
 });
 
-// // person.name = "郭家辉2号";
-// person.company.push({ id: 4, companyName: "腾讯", rate: 1.2 });
-person.company[0].id = 2;
-// person.company[0].assets = 200;
+// let arr = reactivity([{ id: 1 }, { id: 2 }, { id: 3 }]);
+
+person.name = "郭家辉2号";
+effect(() => {
+  // console.log(effect);
+  console.log("effected");
+});
